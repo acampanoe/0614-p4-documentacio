@@ -10,19 +10,48 @@ class Producto {
   }
 }
 
+/**
+ * Llista dels productes que un usuari vol comprar.
+ *
+ * @class
+ * @example
+ * const carrito = new Carrito();
+ * carrito.agregarProducto(new Producto("Mouse", 20, 2));
+ * carrito.calcularTotalCarrito(); // 40
+ */
 class Carrito {
+  /**
+   * Crea un carret buit.
+   */
   constructor() {
+    /** @type {Producto[]} Productes que hi ha al carret. */
     this.productos = [];
   }
 
+  /**
+   * Afegeix un producte al final del carret.
+   *
+   * @param {Producto} producto - Producte que es vol afegir.
+   * @returns {void}
+   */
   agregarProducto(producto) {
     this.productos.push(producto);
   }
 
+  /**
+   * Suma l'import total de tots els productes del carret.
+   *
+   * @returns {number} Total del carret en euros (0 si està buit).
+   */
   calcularTotalCarrito() {
     return this.productos.reduce((total, producto) => total + producto.calcularTotal(), 0);
   }
 
+  /**
+   * Treu tots els productes del carret.
+   *
+   * @returns {void}
+   */
   vaciarCarrito() {
     this.productos = [];
   }
